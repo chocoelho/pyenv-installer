@@ -53,9 +53,9 @@ conditional_mv "$TMP_DIR/pyenv"            "${PYENV_ROOT}"
 conditional_mv "$TMP_DIR/pyenv-doctor"     "${PYENV_ROOT}/plugins/pyenv-doctor"
 conditional_mv "$TMP_DIR/pyenv-installer"  "${PYENV_ROOT}/plugins/pyenv-installer"
 conditional_mv "$TMP_DIR/pyenv-update"     "${PYENV_ROOT}/plugins/pyenv-update"
-conditional_mv "$TMP_DIR/pyenv-virtualenv" "${PYENV_ROOT}/plugins/pyenv-virtualenv"
+conditional_mv "$TMP_DIR/pyenv-virtualenvwrapper" "${PYENV_ROOT}/plugins/pyenv-virtualenvwrapper"
 conditional_mv "$TMP_DIR/pyenv-which-ext"  "${PYENV_ROOT}/plugins/pyenv-which-ext"
-
+conditional_mv "$TMP_DIR/pyenv-implicit"  "${PYENV_ROOT}/plugins/pyenv-implicit"
 rm -rf $TMP_DIR
 
 
@@ -91,12 +91,11 @@ if ! command -v pyenv 1>/dev/null; then
     fish )
       echo "set -x PATH \"${PYENV_ROOT}/bin\" \$PATH"
       echo 'status --is-interactive; and . (pyenv init -|psub)'
-      echo 'status --is-interactive; and . (pyenv virtualenv-init -|psub)'
       ;;
     * )
       echo "export PATH=\"${PYENV_ROOT}/bin:\$PATH\""
       echo "eval \"\$(pyenv init -)\""
-      echo "eval \"\$(pyenv virtualenv-init -)\""
+      echo "pyenv virtualenvwrapper"
       ;;
     esac
   } >&2

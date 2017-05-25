@@ -6,7 +6,7 @@ This tool installs ``pyenv`` and friends. It is inspired by `rbenv-installer <ht
 Installation / Update / Uninstallation
 --------------------------------------
 
-There are two ways to install `pyenv <https://github.com/pyenv/pyenv>`__.
+There are two ways to install `pyenv <https://github.com/chocoelho/pyenv>`__.
 The PyPi support is not tested by many users yet, so the
 direct way is still recommended if you want to play it safe.
 
@@ -17,7 +17,7 @@ Install:
 
 .. code:: bash
 
-    $ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+    $ curl -L https://raw.githubusercontent.com/chocoelho/pyenv-installer/master/bin/pyenv-installer | bash
 
 Update:
 
@@ -38,31 +38,14 @@ and remove these three lines from ``.bashrc``:
 
     export PATH="~/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    pyenv virtualenvwrapper
 
 If you need, export USE_GIT_URI to use git:// instead of https:// for git clone.
-
-PyPi way
-~~~~~~~~
-
-**WARNING** still a very hacky proof of concept. Does not work with Python 3 at all yet and in Python 2 only with 
-the use of the --egg parameter.
-
-Install::
-
-    $ pip install --egg pyenv
-
-
-In the current implementation updates and uninstallation works exactly like
-the github way.
-
-**NOTE**: ``pip freeze`` will not show pyenv as installed as this tool is just a
-thin wrapper around the shell install script.
 
 Development and testing
 -----------------------
 
-The `project on github <https://github.com/pyenv/pyenv-installer>`__ contains
+The `project on github <https://github.com/chocoelho/pyenv-installer>`__ contains
 a setup for vagrant to test the installer inside a vagrant managed virtual image.
 
 If you don't know vagrant yet: just `install the latest
@@ -86,7 +69,7 @@ The project (this repository) is mapped into the vagrant image at
     $ python setup.py install
     $ echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
     $ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-    $ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+    $ echo 'pyenv virtualenvwrapper' >> ~/.bashrc
     $ source ~/.bashrc
 
 Pyenv should be installed and responding now.
